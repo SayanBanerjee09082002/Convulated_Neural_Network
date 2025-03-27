@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdint>
 #include <string>
+#include <cmath> 
 
 class Image {
     public:
@@ -13,7 +14,10 @@ class Image {
         std::vector<std::vector<uint8_t>> pixels;
         
         Image(const std::string &file_path);
+        Image(const std::vector<std::vector<uint8_t>> &result);
         ~Image();
 };
+
+std::vector<std::vector<uint8_t>> apply_kernel(const std::vector<std::vector<uint8_t>> &pixels, const std::vector<std::vector<float>> &kernel, int stride);
 
 #endif
