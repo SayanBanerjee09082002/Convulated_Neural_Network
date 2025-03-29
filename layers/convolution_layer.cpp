@@ -28,7 +28,7 @@ std::vector<Image> Convolution_Layer::perform_convolution(const Image &input, co
     for (int kernel : kernels) {
         Kernel k = get_kernel(kernel);
         std::vector<std::vector<uint8_t>> result = apply_kernel(input.pixels, k.weights, stride);
-        Image img = Image(result);
+        Image img = Image(result, input.label);
         output.push_back(img);
     }
     return output;

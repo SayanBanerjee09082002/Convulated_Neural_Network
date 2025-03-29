@@ -11,10 +11,11 @@ class Image {
         int width;
         int height;
         int channels;
+        int label;
         std::vector<std::vector<uint8_t>> pixels;
         
-        Image(const std::string &file_path);
-        Image(const std::vector<std::vector<uint8_t>> &result);
+        Image(const std::string &file_path, int label);
+        Image(const std::vector<std::vector<uint8_t>> &result, int label);
         ~Image();
 };
 

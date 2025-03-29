@@ -4,7 +4,10 @@
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <cmath>
 #include <algorithm>
+#include <ctime>
+#include <random>
 #include "../data/image.h"
 
 class Kernel {
@@ -39,13 +42,23 @@ class Functional_Layer {
         static std::vector<Image> perform_functional_operation(const Image input, const std::vector<int> &kernels, int convolution_stride = 1, int pooling_size = 3, int pooling_stride = 2);
 };
 
-class Fully_Connected_Neural_Network {
+class Neural_Network {
     public:
-        
-};
+        int input_size, hidden_size, output_size;
+        std::vector<std::vector<float>> weights1;
+        std::vector<float> bias1;  
+        std::vector<std::vector<float>> weights2;
+        std::vector<float> bias2;
+        float learning_rate;
 
-class Classification_Layer{
-
+        Neural_Network(int input_size, int hidden_size, int output_size, float learning_rate = 0.0001);
+        ~Neural_Network();
+        void train(const std::vector<float>& input, int label);
+        int predict(const std::vector<float>& input);
+    
+    private:
+        std::vector<float> forward_pass(const std::vector<float>& input, std::vector<float>& hidden_out);
+        void backward_pass(const std::vector<float>& input, const std::vector<float>& hidden, const std::vector<float>& output, int target);
 };
 
 #endif

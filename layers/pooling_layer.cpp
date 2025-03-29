@@ -22,5 +22,5 @@ Image Pooling_Layer::perform_pooling(const Image &input, int pool_size, int stri
         }
     }
 
-    return Image(pooledPixels);
+    return Image(pooledPixels, input.label);
 }

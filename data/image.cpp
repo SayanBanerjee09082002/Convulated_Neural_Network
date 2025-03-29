@@ -5,8 +5,9 @@
 #include "../stb/stb_image.h"
 
 // Constructor that loads from file
-Image::Image(const std::string &file_path) 
+Image::Image(const std::string &file_path, int label) 
     : width(0), height(0), channels(0) {
+    this->label = label;
     unsigned char *data = stbi_load(file_path.c_str(), &width, &height, &channels, 0);
     if (data) {
         pixels.resize(height, std::vector<uint8_t>(width, 0));
@@ -34,8 +35,9 @@ Image::Image(const std::string &file_path)
 }
 
 // Constructor that loads from vector
-Image::Image(const std::vector<std::vector<uint8_t>> &result)
+Image::Image(const std::vector<std::vector<uint8_t>> &result, int label)
     : pixels(result), channels(1) {
+    this->label = label;
     height = result.size();
     width = height > 0 ? result[0].size() : 0;
 }

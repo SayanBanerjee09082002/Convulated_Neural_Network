@@ -6,7 +6,7 @@ CXXFLAGS := -std=c++17 -Wall -Wextra -I.
 VPATH := .:data:layers
 
 # List of source files with paths (Make will use VPATH to find them)
-SRC := main.cpp image.cpp image_utils.cpp kernels.cpp convolution_layer.cpp pooling_layer.cpp functional_layer.cpp
+SRC := main.cpp image.cpp image_utils.cpp kernels.cpp convolution_layer.cpp pooling_layer.cpp functional_layer.cpp neural_network.cpp
 
 # Directory for object files
 OBJ_DIR := bin
